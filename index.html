@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#06101d" />
+    <title>Hubble Space Telescope | 3D Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="nasa-watermark" aria-hidden="true">
+      <span>NASA</span>
+    </div>
+    <model-viewer
+      id="hubble-model"
+      src="./telescopio-espacial-hubble/source/hubble-silver-solar-panels.glb"
+      alt="A 3D model of the Hubble Space Telescope"
+      camera-controls
+      auto-rotate
+      auto-rotate-delay="1200"
+      rotation-per-second="18deg"
+      environment-image="neutral"
+      shadow-intensity="0.3"
+      shadow-softness="0.8"
+      exposure="1.1"
+      interaction-prompt="none"
+      camera-orbit="35deg 70deg 5.5m"
+      field-of-view="30deg"
+    >
+      <div class="loading" slot="progress-bar">
+        <div class="progress-track"><div class="progress-value"></div></div>
+      </div>
+      <div class="model-error" slot="error">
+        Unable to load the telescope model. Check that the local server is running
+        from this folder.
+      </div>
+    </model-viewer>
+    <aside id="part-info" class="part-info" aria-live="polite" hidden>
+      <p class="part-kicker">HUBBLE COMPONENT</p>
+      <h2></h2>
+      <p class="part-description"></p>
+      <p class="part-source">SOURCE: NASA / ESA</p>
+    </aside>
+    <button id="pause-button" class="pause-button" type="button" aria-label="Pause model movement">
+      <span class="pause-icon" aria-hidden="true">Ⅱ</span>
+      <span class="pause-label">PAUSE</span>
+    </button>
+    <script src="./app.js"></script>
+  </body>
+</html>
