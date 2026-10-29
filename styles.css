@@ -1,0 +1,196 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #061d46;
+}
+
+.nasa-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(78vw, 900px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  border: clamp(5px, 0.8vw, 11px) solid rgba(255, 255, 255, 0.17);
+  border-radius: 50%;
+  filter: blur(7px);
+  opacity: 0.68;
+  pointer-events: none;
+}
+
+.nasa-watermark::before {
+  content: "";
+  position: absolute;
+  top: 47%;
+  left: -8%;
+  width: 116%;
+  height: clamp(4px, 0.6vw, 8px);
+  transform: rotate(-23deg);
+  background: rgba(235, 244, 255, 0.18);
+}
+
+.nasa-watermark::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 48%;
+  width: 5%;
+  height: 76%;
+  transform: rotate(38deg);
+  background: rgba(235, 244, 255, 0.14);
+  border-radius: 50%;
+}
+
+.nasa-watermark span {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) rotate(12deg);
+  color: rgba(255, 255, 255, 0.18);
+  font: 700 clamp(80px, 17vw, 220px)/1 Arial, sans-serif;
+  letter-spacing: -0.12em;
+}
+
+model-viewer {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  --poster-color: transparent;
+  background:
+    radial-gradient(ellipse at center, rgba(45, 122, 209, 0.28), transparent 62%),
+    transparent;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(220px, 45vw);
+  transform: translate(-50%, -50%);
+}
+
+.loading[hidden] {
+  display: none;
+}
+
+.progress-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.progress-value {
+  width: 4%;
+  height: 100%;
+  background: #6de6d0;
+  transition: width 0.2s ease;
+}
+
+.model-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(420px, 80vw);
+  transform: translate(-50%, -50%);
+  color: #ff9a9a;
+  font: 12px monospace;
+  text-align: center;
+}
+
+.part-info {
+  position: fixed;
+  z-index: 2;
+  width: min(310px, calc(100vw - 32px));
+  padding: 18px 20px;
+  color: #eaf3ff;
+  background: rgba(3, 17, 43, 0.88);
+  border: 1px solid rgba(164, 213, 255, 0.42);
+  border-left: 3px solid #e8ad42;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  transform: translate(14px, 14px);
+}
+
+.part-info[hidden] {
+  display: none;
+}
+
+.part-kicker,
+.part-source {
+  margin: 0;
+  color: #82c8ff;
+  font: 10px/1.4 "DM Mono", monospace;
+  letter-spacing: 0.13em;
+}
+
+.part-info h2 {
+  margin: 7px 0 8px;
+  color: #f0c46b;
+  font: 600 21px/1.1 "Space Grotesk", sans-serif;
+}
+
+.part-description {
+  margin: 0 0 15px;
+  color: #c3d2e6;
+  font: 13px/1.5 "Space Grotesk", sans-serif;
+}
+
+.part-source {
+  padding-top: 11px;
+  border-top: 1px solid rgba(164, 213, 255, 0.2);
+  color: #8ea5c1;
+  font-size: 9px;
+}
+
+.pause-button {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  color: #dceaff;
+  background: rgba(3, 17, 43, 0.78);
+  border: 1px solid rgba(164, 213, 255, 0.45);
+  border-radius: 3px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  font: 10px "DM Mono", monospace;
+  letter-spacing: 0.1em;
+}
+
+.pause-button:hover,
+.pause-button.is-paused {
+  color: #f0c46b;
+  border-color: #e8ad42;
+}
+
+.pause-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .pause-button {
+    left: 16px;
+    bottom: 16px;
+  }
+}
